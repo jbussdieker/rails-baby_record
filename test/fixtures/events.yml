@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  left_breast: false
+  right_breast: false
+  bottle_amount: 1
+  wet_diaper: false
+  dirty_diaper: false
+
+two:
+  left_breast: false
+  right_breast: false
+  bottle_amount: 1
+  wet_diaper: false
+  dirty_diaper: false

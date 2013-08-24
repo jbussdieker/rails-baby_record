@@ -1,0 +1,38 @@
+<%= form_for(@event) do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Breast Feeding</div>
+    <div class="panel-body">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-lg btn-primary">
+          <%= f.check_box :left_breast %>Left
+        </label>
+      </div>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-lg btn-primary">
+          <%= f.check_box :right_breast %>Right
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Diaper</div>
+    <div class="panel-body">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-lg btn-primary">
+          <%= f.check_box :wet_diaper %> Wet
+        </label>
+      </div>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-lg btn-primary">
+          <%= f.check_box :dirty_diaper %> Dirty
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

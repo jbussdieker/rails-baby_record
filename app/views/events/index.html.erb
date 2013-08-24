@@ -1,0 +1,24 @@
+<p>
+<%= link_to "New", new_event_path, :class => 'btn btn-primary' %>
+</p>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Time</th>
+    <th>Left Breast</th>
+    <th>Right Breast</th>
+    <th>Wet Diaper</th>
+    <th>Dirty Diaper</th>
+    <th></th>
+  </tr>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= time_ago_in_words(event.created_at) %></td>
+      <td><%= event.left_breast ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
+      <td><%= event.right_breast ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
+      <td><%= event.wet_diaper ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
+      <td><%= event.dirty_diaper ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
+      <td><%= link_to "Delete", event, :method => :delete, :confirm => "Are you sure?" %></td>
+    </tr>
+  <% end %>
+</table>
