@@ -12,3 +12,51 @@
  *= require_self
  *= require_tree .
  */
+.table-striped.report {
+  border: 1px solid black;
+}
+.table-striped.report td {
+  border: 1px solid black;
+}
+.report .time {
+  text-align: center;
+  vertical-align: inherit;
+}
+.report .left {
+  text-align: center;
+  vertical-align: inherit;
+}
+.report .right {
+  text-align: center;
+  vertical-align: inherit;
+}
+.report .amount {
+  text-align: center;
+  vertical-align: inherit;
+}
+.report .breastfeeding {
+  background: #B7F1B7;
+  text-align: center;
+  vertical-align: inherit;
+}
+.report .bottle_feeding {
+  background: #DEDAFF;
+  text-align: center;
+  vertical-align: inherit;
+}
+.report .dirty_diaper {
+  background: #978E60;
+  text-align: center;
+  vertical-align: inherit;
+}
+.report .wet_diaper {
+  background: #E9DEA8;
+  text-align: center;
+  vertical-align: inherit;
+}
+.table-striped.report > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+  background: #E9DEA8;
+}
+.table-striped.report > tbody > tr > td.date {
+  background: #B9D0E2;
+}

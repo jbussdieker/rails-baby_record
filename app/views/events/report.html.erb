@@ -1,0 +1,30 @@
+<h2 style='text-align: center'>MY BABY'S DAILY RECORD</h2>
+<% @events.each do |date, items| %>
+  <table class="table table-bordered table-striped table-condensed report">
+    <tr>
+      <td colspan="6" class="date">Date: <%= date %></td>
+    </tr>
+    <tr>
+      <td rowspan=2 class="time">Time</td>
+      <td colspan=2 class="breastfeeding">Breastfeeding</td>
+      <td class="bottle_feeding">Bottle<br>Feedings</td>
+      <td rowspan=2 class="wet_diaper">Wet Diaper</td>
+      <td rowspan=2 class="dirty_diaper">Dirty Diaper</td>
+    </tr>
+    <tr>
+      <td class="left">Left</td>
+      <td class="right">Right</td>
+      <td class="amount">Amount</td>
+    </tr>
+  <% items.each do |item| %>
+    <tr>
+      <td><%= item.created_at.in_time_zone("Eastern Time (US & Canada)").to_s(:time) %></td>
+      <td><%= item.left_breast %></td>
+      <td><%= item.right_breast %></td>
+      <td><%= item.bottle_amount %></td>
+      <td><%= item.wet_diaper ? "X" : "" %></td>
+      <td><%= item.dirty_diaper ? "X" : "" %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>

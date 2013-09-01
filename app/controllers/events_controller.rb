@@ -3,6 +3,10 @@ class EventsController < ApplicationController
     @events = Event.order("created_at DESC")
   end
 
+  def report
+    @events = Event.order("created_at").group_by {|item| item.created_at.to_date}
+  end
+
   def new
     @event = Event.new
   end

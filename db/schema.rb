@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20130824140146) do
 
   create_table "events", :force => true do |t|
-    t.boolean  "left_breast"
-    t.boolean  "right_breast"
+    t.integer  "left_breast"
+    t.integer  "right_breast"
     t.integer  "bottle_amount"
     t.boolean  "wet_diaper"
     t.boolean  "dirty_diaper"

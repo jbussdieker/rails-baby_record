@@ -12,5 +12,83 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require_tree .
+function StopWatch() {
+  var startTime = null;
+  var stopTime = null;
+  var totalTime = 0;
+  var running = false;
+
+  function getTime(){
+    var day = new Date();
+    return day.getTime();
+  }
+
+  this.running = function(){
+    return running;
+  }
+
+  this.toggle = function(){
+    if (running == true)
+      this.stop();
+    else
+      this.start();
+  }
+
+  this.start = function(){ 
+    startTime = getTime();
+    stopTime = null; 
+    running = true;    
+  }
+
+  this.stop = function(){ 
+    stopTime = getTime();
+    totalTime += this.duration();
+    running = false; 
+  }
+
+  this.total = function(){
+    return Math.round(totalTime + this.duration());
+  }
+
+  this.duration = function(){ 
+    if(startTime == null || running == false)
+      return 0;
+    else {
+      if (stopTime == null)
+        return (getTime() - startTime) / 1000;
+      else
+        return (stopTime - startTime) / 1000;
+    }
+  }
+}
+
+ltimer = new StopWatch();
+rtimer = new StopWatch();
+var id = setInterval(function() {
+  $("#event_left_breast").val(ltimer.total());
+}, 500);
+var id = setInterval(function() {
+  $("#event_right_breast").val(rtimer.total());
+}, 500);
+
+$(document).ready(function() {
+  $("#left_button").click(function(a) {
+    ltimer.toggle();
+    if (ltimer.running())
+      $("#left_button").attr("class", "btn btn-success");
+    else
+      $("#left_button").attr("class", "btn btn-primary");
+
+    return false;
+  });
+  $("#right_button").click(function(a) {
+    rtimer.toggle();
+    if (rtimer.running())
+      $("#right_button").attr("class", "btn btn-success");
+    else
+      $("#right_button").attr("class", "btn btn-primary");
+
+    return false;
+  });
+});

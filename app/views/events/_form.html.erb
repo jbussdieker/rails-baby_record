@@ -2,16 +2,16 @@
   <div class="panel panel-default">
     <div class="panel-heading">Breast Feeding</div>
     <div class="panel-body">
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-lg btn-primary">
-          <%= f.check_box :left_breast %>Left
-        </label>
-      </div>
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-lg btn-primary">
-          <%= f.check_box :right_breast %>Right
-        </label>
-      </div>
+      <table>
+        <tr>
+          <td><button style='width:100%' id="left_button" class="btn btn-primary">Left</button></td>
+          <td><%= f.text_field :left_breast, :class => 'form-control' %></td>
+        </tr>
+        <tr>
+          <td><button style='width:100%' id="right_button" class="btn btn-primary">Right</button></td>
+          <td><%= f.text_field :right_breast, :class => 'form-control' %></td>
+        </tr>
+      </table>
     </div>
   </div>
 
@@ -19,16 +19,24 @@
   <div class="panel panel-default">
     <div class="panel-heading">Diaper</div>
     <div class="panel-body">
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-lg btn-primary">
-          <%= f.check_box :wet_diaper %> Wet
-        </label>
-      </div>
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-lg btn-primary">
-          <%= f.check_box :dirty_diaper %> Dirty
-        </label>
-      </div>
+      <table>
+        <tr>
+          <td>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary">
+                <%= f.check_box :wet_diaper %> Wet
+              </label>
+            </div>
+          </td>
+          <td>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary">
+                <%= f.check_box :dirty_diaper %> Dirty
+              </label>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 

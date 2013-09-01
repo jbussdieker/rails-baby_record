@@ -14,8 +14,8 @@
   <% @events.each do |event| %>
     <tr>
       <td><%= time_ago_in_words(event.created_at) %></td>
-      <td><%= event.left_breast ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
-      <td><%= event.right_breast ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
+      <td><%= event.left_breast %></td>
+      <td><%= event.right_breast %></td>
       <td><%= event.wet_diaper ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
       <td><%= event.dirty_diaper ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
       <td><%= link_to "Delete", event, :method => :delete, :confirm => "Are you sure?" %></td>
