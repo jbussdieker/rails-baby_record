@@ -1,0 +1,18 @@
+<h2>Charts</h2>
+
+<p>
+<%= link_to "Back", events_path, :class => 'btn btn-primary' %>
+</p>
+
+<h3>Feeding</h3>
+<%= line_chart [
+  {:name => "Left Breast", :data => Event.group_by_day(:created_at).sum(:left_breast)},
+  {:name => "Right Breast", :data => Event.group_by_day(:created_at).sum(:right_breast)}
+]
+%>
+
+<h3>Wet Diapers</h3>
+<%= column_chart Event.where(:wet_diaper => true).group_by_day(:created_at).count %>
+
+<h3>Dirty Diapers</h3>
+<%= column_chart Event.where(:dirty_diaper => true).group_by_day(:created_at).count %>
