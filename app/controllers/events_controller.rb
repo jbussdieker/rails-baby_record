@@ -4,7 +4,9 @@ class EventsController < ApplicationController
   end
 
   def report
-    @events = Event.order("created_at").group_by {|item| item.created_at.to_date}
+    @events = Event.order("created_at").group_by do |item|
+      item.created_at.in_time_zone("Eastern Time (US & Canada)").to_date
+    end
   end
 
   def new
