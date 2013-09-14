@@ -5,7 +5,7 @@
 </p>
 
 <h3>Feeding</h3>
-<%= line_chart [
+<%= area_chart [
   {
     :name => "Left Breast",
     :data => Event.group_by_day(:created_at, "Eastern Time (US & Canada)").sum(:left_breast)
@@ -19,12 +19,12 @@
 <%= column_chart Event.
   where(:wet_diaper => true).
   group_by_day(:created_at, "Eastern Time (US & Canada)").
-  count
+  count, :library => {:colors => ["#fb1"]}
 %>
 
 <h3>Dirty Diapers</h3>
 <%= column_chart Event.
   where(:dirty_diaper => true).
   group_by_day(:created_at, "Eastern Time (US & Canada)").
-  count
+  count, :library => {:colors => ["#861"]}
 %>
