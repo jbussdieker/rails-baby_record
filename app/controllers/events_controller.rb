@@ -18,6 +18,10 @@ class EventsController < ApplicationController
       group_by_day(:created_at, "Eastern Time (US & Canada)").
       order(:day).
       sum(:right_breast).collect {|k,v| [Time.parse(k).to_date, v / 60.0]}.flatten
+    bottle = Event.
+      group_by_day(:created_at, "Eastern Time (US & Canada)").
+      order(:day).
+      sum(:bottle_amount).collect {|k,v| [Time.parse(k).to_date, v * 600.0]}.flatten
 
     render :json => [
       {
@@ -26,9 +30,11 @@ class EventsController < ApplicationController
       }, {
         :name => "Right Breast",
         :data => Hash[*right_breast]
+      }, {
+        :name => "Bottle",
+        :data => Hash[*bottle]
       }
     ]
- 
   end
 
   def wet_diapers
