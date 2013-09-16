@@ -9,6 +9,46 @@ class EventsController < ApplicationController
     end
   end
 
+  def feedings
+    left_breast = Event.
+      group_by_day(:created_at, "Eastern Time (US & Canada)").
+      order(:day).
+      sum(:left_breast).collect {|k,v| [Time.parse(k).to_date, v / 60.0]}.flatten
+    right_breast = Event.
+      group_by_day(:created_at, "Eastern Time (US & Canada)").
+      order(:day).
+      sum(:right_breast).collect {|k,v| [Time.parse(k).to_date, v / 60.0]}.flatten
+
+    render :json => [
+      {
+        :name => "Left Breast",
+        :data => Hash[*left_breast]
+      }, {
+        :name => "Right Breast",
+        :data => Hash[*right_breast]
+      }
+    ]
+ 
+  end
+
+  def wet_diapers
+    wet_diapers = Event.
+      where(:wet_diaper => true).
+      group_by_day(:created_at, "Eastern Time (US & Canada)").
+      order(:day).
+      count.collect {|k,v| [Time.parse(k).to_date, v]}.flatten
+    render :json => Hash[*wet_diapers]
+  end
+
+  def dirty_diapers
+    dirty_diapers = Event.
+      where(:dirty_diaper => true).
+      group_by_day(:created_at, "Eastern Time (US & Canada)").
+      order(:day).
+      count.collect {|k,v| [Time.parse(k).to_date, v]}.flatten
+    render :json => Hash[*dirty_diapers]
+  end
+
   def new
     @event = Event.new
   end

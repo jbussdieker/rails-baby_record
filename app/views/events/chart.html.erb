@@ -5,34 +5,10 @@
 </p>
 
 <h3>Feeding</h3>
-<%= area_chart [
-  {
-    :name => "Left Breast",
-    :data => Event.
-      group_by_day(:created_at, "Eastern Time (US & Canada)").
-      order(:day).
-      sum(:left_breast)
-  }, {
-    :name => "Right Breast",
-    :data => Event.
-      group_by_day(:created_at, "Eastern Time (US & Canada)").
-      order(:day).
-      sum(:right_breast)
-  }
-] %>
+<%= area_chart feedings_events_path %>
 
 <h3>Wet Diapers</h3>
-<%= column_chart Event.
-  where(:wet_diaper => true).
-  group_by_day(:created_at, "Eastern Time (US & Canada)").
-  order(:day).
-  count, :library => {:colors => ["#fb1"]}
-%>
+<%= column_chart wet_diapers_events_path, :library => {:colors => ["#fb1"]} %>
 
 <h3>Dirty Diapers</h3>
-<%= column_chart Event.
-  where(:dirty_diaper => true).
-  group_by_day(:created_at, "Eastern Time (US & Canada)").
-  order(:day).
-  count, :library => {:colors => ["#861"]}
-%>
+<%= column_chart dirty_diapers_events_path, :library => {:colors => ["#861"]} %>
