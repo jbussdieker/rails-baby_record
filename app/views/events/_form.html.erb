@@ -1,17 +1,24 @@
 <%= form_for(@event) do |f| %>
   <div class="panel panel-default">
-    <div class="panel-heading">Breast Feeding</div>
+    <div class="panel-heading">Feeding</div>
     <div class="panel-body">
-      <table>
-        <tr>
-          <td><button style='width:100%' id="left_button" class="btn btn-primary">Left</button></td>
-          <td><%= f.text_field :left_breast, :class => 'form-control' %></td>
-        </tr>
-        <tr>
-          <td><button style='width:100%' id="right_button" class="btn btn-primary">Right</button></td>
-          <td><%= f.text_field :right_breast, :class => 'form-control' %></td>
-        </tr>
-      </table>
+      <div class="form-group">
+        <%= f.label :breast %>
+        <table>
+          <tr>
+            <td><button style='width:100%' id="left_button" class="btn btn-primary">Left</button></td>
+            <td><%= f.text_field :left_breast, :class => 'form-control' %></td>
+          </tr>
+          <tr>
+            <td><button style='width:100%' id="right_button" class="btn btn-primary">Right</button></td>
+            <td><%= f.text_field :right_breast, :class => 'form-control' %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="form-group">
+        <%= f.label :bottle %>
+        <%= f.number_field :bottle_amount, :class => 'form-control' %>
+      </div>
     </div>
   </div>
 

@@ -9,6 +9,7 @@
     <th>Time</th>
     <th>Left Breast</th>
     <th>Right Breast</th>
+    <th>Bottle Amount</th>
     <th>Wet Diaper</th>
     <th>Dirty Diaper</th>
     <th></th>
@@ -18,6 +19,7 @@
       <td><%= time_ago_in_words(event.created_at) %></td>
       <td><%= event.left_breast %></td>
       <td><%= event.right_breast %></td>
+      <td><%= event.bottle_amount %></td>
       <td><%= event.wet_diaper ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
       <td><%= event.dirty_diaper ? tag("span", :class => "glyphicon glyphicon-check") : "" %></td>
       <td><%= link_to "Delete", event, :method => :delete, :confirm => "Are you sure?" %></td>
