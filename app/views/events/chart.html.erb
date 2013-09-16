@@ -3,13 +3,8 @@
 <%= link_to "Report", report_events_path, :class => 'btn btn-primary' %>
 </p>
 
-<h2>Charts</h2>
+<h3>Feedings</h3>
+<%= area_chart feeding_events_path %>
 
-<h3>Feeding</h3>
-<%= area_chart feedings_events_path %>
-
-<h3>Wet Diapers</h3>
-<%= column_chart wet_diapers_events_path, :library => {:colors => ["#fb1"]} %>
-
-<h3>Dirty Diapers</h3>
-<%= column_chart dirty_diapers_events_path, :library => {:colors => ["#861"]} %>
+<h3>Diapers</h3>
+<%= line_chart diaper_events_path, :library => {:colors => ["#fb1", "#861"]} %>
