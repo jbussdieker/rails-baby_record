@@ -23,8 +23,8 @@
   <% items.each do |item| %>
     <tr>
       <td><%= item.created_at.in_time_zone("Eastern Time (US & Canada)").to_s(:time) %></td>
-      <td><%= item.left_breast %></td>
-      <td><%= item.right_breast %></td>
+      <td><%= "%0.1f" % (item.left_breast / 60.0) %></td>
+      <td><%= "%0.1f" % (item.right_breast / 60.0) %></td>
       <td><%= item.bottle_amount %></td>
       <td><%= item.wet_diaper ? "X" : "" %></td>
       <td><%= item.dirty_diaper ? "X" : "" %></td>
