@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     bottle = Event.
       group_by_day(:created_at, "Eastern Time (US & Canada)").
       order(:day).
-      sum(:bottle_amount).collect {|k,v| [Time.parse(k).to_date, v * 600.0]}.flatten
+      sum(:bottle_amount).collect {|k,v| [Time.parse(k).to_date, v * 10.0]}.flatten
 
     render :json => [
       {
