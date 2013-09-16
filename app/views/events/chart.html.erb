@@ -8,10 +8,16 @@
 <%= area_chart [
   {
     :name => "Left Breast",
-    :data => Event.group_by_day(:created_at, "Eastern Time (US & Canada)").sum(:left_breast)
+    :data => Event.
+      group_by_day(:created_at, "Eastern Time (US & Canada)").
+      order(:day).
+      sum(:left_breast)
   }, {
     :name => "Right Breast",
-    :data => Event.group_by_day(:created_at, "Eastern Time (US & Canada)").sum(:right_breast)
+    :data => Event.
+      group_by_day(:created_at, "Eastern Time (US & Canada)").
+      order(:day).
+      sum(:right_breast)
   }
 ] %>
 
@@ -19,6 +25,7 @@
 <%= column_chart Event.
   where(:wet_diaper => true).
   group_by_day(:created_at, "Eastern Time (US & Canada)").
+  order(:day).
   count, :library => {:colors => ["#fb1"]}
 %>
 
@@ -26,5 +33,6 @@
 <%= column_chart Event.
   where(:dirty_diaper => true).
   group_by_day(:created_at, "Eastern Time (US & Canada)").
+  order(:day).
   count, :library => {:colors => ["#861"]}
 %>
